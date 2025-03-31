@@ -1,0 +1,6 @@
+### e-bay elements
+search_textbox: 'xpath=//*[@title="Search"]'
+search_button: 'xpath=//*[@id="gh-search-btn"]'
+model_year: 'xpath=//input[@aria-label="2024" and @type="checkbox"]'
+result_count: 'xpath=//*[@id="mainContent"]//h1/span[1]'
+result_text: 'xpath=//*[@id="mainContent"]//h1/span[2]'
