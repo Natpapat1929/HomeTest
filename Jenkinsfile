@@ -13,13 +13,13 @@ pipeline {
             }
         }
         
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${env.DOCKER_IMAGE}:${env.DOCKER_TAG}", "--file Dockerfile .")
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         script {
+        //             docker.build("${env.DOCKER_IMAGE}:${env.DOCKER_TAG}", "--file Dockerfile .")
+        //         }
+        //     }
+        // }
         
         stage('Run Tests') {
             steps {
