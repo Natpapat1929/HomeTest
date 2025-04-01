@@ -1,22 +1,20 @@
 pipeline {
-    agent any
-    
-    environment {
-        DOCKER_IMAGE = 'robot-test'
-        DOCKER_TAG = 'lts'
-    }
-    
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'develop', url: 'https://github.com/Natpapat1929/HomeTest.git'
-            }
+        agent {
+        docker {
+            image 'ppodgorsek/robot-framework'
         }
-        
+        }
+
+        stages {
+            stage('Checkout') {
+                steps {
+g                   it branch: 'develop', url: 'https://github.com/YOUR_USER/YOUR_REPO.git'
+                }
+            }
+
         stage('Run Tests') {
             steps {
                 script {
-                    docker.image("${env.DOCKER_IMAGE}:${env.DOCKER_TAG}").inside {
                         sh 'robot --outputdir results/ script.robot'
                     }
                     

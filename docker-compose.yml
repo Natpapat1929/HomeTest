@@ -1,11 +1,8 @@
 version: '3.8'
-
 services:
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins
-    privileged: true
-    user: root
     ports:
       - "8080:8080"
       - "50000:50000"
@@ -14,12 +11,19 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
-    networks:
-      - jenkins-net
-
+    restart: unless-stopped
+ 
+  robot:
+    image: ppodgorsek/robot-framework
+    container_name: robot
+    depends_on:
+      - jenkins
+    volumes:
+      - ./tests:/opt/robotframework/tests
+      - ./reports:/opt/robotframework/reports
+    environment:
+      - BROWSER=chrome
+    command: tail -f /dev/null
+ 
 volumes:
   jenkins_home:
-
-networks:
-  jenkins-net:
-    driver: bridge
