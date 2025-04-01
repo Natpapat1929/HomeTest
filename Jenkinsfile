@@ -9,14 +9,6 @@ pipeline {
             }
         }
         
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("robot-test", "--file Dockerfile .")
-                }
-            }
-        }
-        
         stage('Run Tests') {
             steps {
                 script {
@@ -27,13 +19,10 @@ pipeline {
         
         stage('Publish Results') {
             steps {
-                // เก็บผลลัพธ์การทดสอบ
                 archiveArtifacts artifacts: 'results/*', allowEmptyArchive: true
                 
-                // Publish Robot Framework report
                 robot outputPath: 'results'
                 
-                // Publish HTML report
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
