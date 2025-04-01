@@ -1,8 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'docker:latest' }
+    }
     
     environment {
-        DOCKER_IMAGE = 'robot-test' 
+        DOCKER_IMAGE = 'robot-test'
         DOCKER_TAG = 'latest'
     }
     
