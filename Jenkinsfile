@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'ppodgorsek/robot-framework'
-        }
-    }
+    agent any
     
     stages {
         stage('Checkout') {
@@ -17,9 +13,9 @@ pipeline {
                 script {
                     sh 'robot --outputdir results/ script.robot'
                 }
-                
+
                 archiveArtifacts artifacts: 'results/log.html,results/output.xml,results/report.html', allowEmptyArchive: true
-                
+
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
