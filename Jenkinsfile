@@ -11,10 +11,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh '''
-                    docker run --rm -v "$WORKSPACE:/opt/robotframework/tests" -v "$WORKSPACE/results:/opt/robotframework/reports" \
-                    robotframework/robot:latest /opt/robotframework/tests/script.robot
-                    '''
+                    sh 'docker exec robot-test robot --outputdir /opt/robotframework/reports /opt/robotframework/tests/script.robot'
                 }
 
                 archiveArtifacts artifacts: 'results/log.html,results/output.xml,results/report.html', allowEmptyArchive: true
