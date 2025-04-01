@@ -12,7 +12,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'docker exec robot-test robot --outputdir /opt/robotframework/reports /opt/robotframework/tests/script.robot'
+                    sh 'docker exec robot-test robot --outputdir /opt/robotframework/reports /opt/robotframework/HomeTest/script.robot'
                 }
             }
         }
