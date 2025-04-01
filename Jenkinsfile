@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         DOCKER_IMAGE = 'robot-test'
-        DOCKER_TAG = 'latest'
+        DOCKER_TAG = 'lts'
     }
     
     stages {
