@@ -34,11 +34,4 @@ pipeline {
             }
         }
     }
-    
-    post {
-        always {
-            // ทำความสะอาด
-            sh 'docker rmi -f robot-test || true'
-        }
-    }
 }
