@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'jenkins/jenkins:lts' }
-    }
+    agent any
     
     environment {
         DOCKER_IMAGE = 'robot-test'
