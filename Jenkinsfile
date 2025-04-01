@@ -4,11 +4,11 @@ pipeline {
             image 'ppodgorsek/robot-framework'
         }
         }
-
+        
         stages {
             stage('Checkout') {
                 steps {
-g                   it branch: 'develop', url: 'https://github.com/YOUR_USER/YOUR_REPO.git'
+                   it branch: 'develop', url: 'https://github.com/Natpapat1929/HomeTest.git'
                 }
             }
 
