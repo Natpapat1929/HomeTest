@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("robot-test-image", "--file Dockerfile .")
+                    docker.build("robot-test", "--file Dockerfile .")
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
                     docker run --rm \
                     -v ${WORKSPACE}/results:/opt/robotframework/reports \
                     --name robot-test \
-                    robot-test-image
+                    robot-test
                     '''
                 }
             }
@@ -55,7 +55,7 @@ pipeline {
     post {
         always {
             // ทำความสะอาด
-            sh 'docker rmi -f robot-test-image || true'
+            sh 'docker rmi -f robot-test || true'
         }
     }
 }
