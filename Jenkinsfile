@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    docker run --rm -v ${env.WORKSPACE}:/opt/robotframework/tests -v ${env.WORKSPACE}/results:/opt/robotframework/reports \
+                    docker run --rm -v "$WORKSPACE:/opt/robotframework/tests" -v "$WORKSPACE/results:/opt/robotframework/reports" \
                     robotframework/robot:latest /opt/robotframework/tests/script.robot
                     '''
                 }
