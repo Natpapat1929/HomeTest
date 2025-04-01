@@ -11,11 +11,14 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'robot --outputdir results/ script.robot'
+                    // รันคำสั่ง Robot Framework ใน Container ชื่อ robot-test
+                    sh 'docker exec robot-test robot --outputdir /opt/robotframework/reports /opt/robotframework/tests/script.robot'
                 }
 
+                // เก็บผลลัพธ์การทดสอบ
                 archiveArtifacts artifacts: 'results/log.html,results/output.xml,results/report.html', allowEmptyArchive: true
 
+                // เผยแพร่รายงาน HTML
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,

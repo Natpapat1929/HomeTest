@@ -14,21 +14,21 @@ services:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
     networks:
       - jenkins-net
- 
-  robot:
+
+  robot-test:
     image: ppodgorsek/robot-framework
-    container_name: robot
+    container_name: robot-test
     depends_on:
       - jenkins
     volumes:
       - ./tests:/opt/robotframework/tests
-      - ./reports:/opt/robotframework/reports
+      - ./results:/opt/robotframework/reports
     environment:
       - BROWSER=chrome
     command: tail -f /dev/null
     networks:
       - jenkins-net
- 
+
 volumes:
   jenkins_home:
 
