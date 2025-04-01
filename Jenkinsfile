@@ -20,6 +20,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
+<<<<<<< HEAD
                     // รัน container และ mount volume เพื่อเก็บผลลัพธ์
                     sh '''
                     docker run --rm \
@@ -27,6 +28,9 @@ pipeline {
                     --name robot-test \
                     robot-test
                     '''
+=======
+                    sh 'docker exec robot-test robot --outputdir /opt/robotframework/reports /opt/robotframework/tests/script.robot'
+>>>>>>> 6f021c3 (Fix Docker image to use ppodgorsek/robot-framework)
                 }
             }
         }
