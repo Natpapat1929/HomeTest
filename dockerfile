@@ -29,10 +29,10 @@ RUN pip install --no-cache-dir \
     selenium
 
 # คัดลอกไฟล์ทดสอบ
-COPY . /opt/robotframework/HomeTest/
+COPY . /opt/robotframework/tests/
 
 # สร้างโฟลเดอร์สำหรับรายงาน
 RUN mkdir -p /opt/robotframework/reports
 
 # คำสั่งเริ่มต้นเมื่อรัน container
-CMD ["robot", "--outputdir", "/opt/robotframework/reports", "/opt/robotframework/HomeTest/script.robot"]
+CMD ["robot", "--outputdir", "/opt/robotframework/reports", "/opt/robotframework/tests/script.robot"]

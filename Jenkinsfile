@@ -4,15 +4,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/develop']], 
-                         userRemoteConfigs: [[url: 'https://github.com/Natpapat1929/HomeTest.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/develop']], userRemoteConfigs: [[url: 'https://github.com/Natpapat1929/HomeTest.git']]])
             }
         }
         
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'docker exec robot-test robot --outputdir /opt/robotframework/reports /opt/robotframework/HomeTest/script.robot'
+                    sh 'docker exec robot-test robot --outputdir /opt/robotframework/reports /opt/robotframework/tests/script.robot'
                 }
             }
         }
